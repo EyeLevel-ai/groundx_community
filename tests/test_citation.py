@@ -13,7 +13,7 @@ import os
 import logging
 import pytest
 from dotenv import load_dotenv
-from chat_utils.citing import generate_cited_response
+from groundx_community.chat_utils.citing import generate_cited_response
 
 # Load env
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), ".env"))

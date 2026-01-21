@@ -1,3 +1,6 @@
+# About
+Unofficial but usefull functionality, developed by the community, to make GroundX more convenient and more powerfull. Use in your projects, or take inspiration in your own codebase.
+
 # Installation
 
 To install the most recent version:
@@ -80,9 +83,32 @@ This is a response that needs to be cited<InTextCitation chunkId="11111111-aaaa-
 
 `InTextCitation` can be configured as necessary to allow for arbitrary functionality. For example, in [this example](https://github.com/EyeLevel-ai/groundx_community/blob/main/examples/rag_in_text_citation.ipynb), you can see an example of turning in-text citations into clickable links which open the respective PDF being referenced.
 
+## Upload Polling
+
+Handy little util that polls an upload, printing out statuses, then exits when done. Allows one to halt a process until an upload is completed. It has one required argument, which is the `process_id` being polled.
+
+it has two verbosity settings:
+- `print_updates`: Prints update of current state
+- `print_completed`: Once the upload process is complete, print a notification
+
+Upload processes can have the following states:
+```
+queued, processing, error, complete, cancelled, active, inactive
+```
+
+This function polls upload processes which are still in progress (`queue`, `processing`, `active`) then stops when the upload process completes (`error`, `complete`, `cancelled`, `inactive`). The final process state is returned, as a string, as the ultimate output of the function.
+
+Usage looks like this:
+```
+<TODO>
+```
+
+Currently this function only supports polling one process, though one can trivially iterate over a list of upload processes to wait for them to complete, or parallelized for more clever management of multiple upload processes.
+
 # Testing
 
-to test, `tests` should have a properly configured .env variable. Then run
+to test, `tests` should have a properly configured .env variable (as outlined in `template_env.txt`). Then run this
 
 ```uv run -m pytest tests/```
 
+it should run tests against the library as it's defined in `src`
