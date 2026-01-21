@@ -100,7 +100,16 @@ This function polls upload processes which are still in progress (`queue`, `proc
 
 Usage looks like this:
 ```
-<TODO>
+from groundx_community.upload_utils.management import upload_poller
+
+final_state = upload_poller(
+        client=client,
+        process_id=process_id,
+        poll_interval=2.0,
+        timeout=300,
+        logger=logger,
+        print_completed=True,
+    )
 ```
 
 Currently this function only supports polling one process, though one can trivially iterate over a list of upload processes to wait for them to complete, or parallelized for more clever management of multiple upload processes.
